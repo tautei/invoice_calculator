@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 
+
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var salesAmountInput: UITextField!
@@ -17,8 +19,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalAmountInput:UITextField!
     @IBOutlet weak var yearnow: UILabel!
     @IBOutlet weak var capitalshow: UILabel!
+    @IBOutlet weak var companySerialInput: UITextField!
+    @IBOutlet weak var companyNameInput: UITextField!
     
-
+    //var companydata = CompanyData()
     
     
     override func viewDidLoad() {
@@ -37,6 +41,8 @@ class ViewController: UIViewController {
         
         
         
+        
+        
     }
     
     //收鍵盤
@@ -46,6 +52,7 @@ class ViewController: UIViewController {
     }
     @IBAction func salessend(_ sender: Any) {
 
+        if salesAmountInput.text!.count < 20 {
         //無論輸入框收到什麼值，都先把逗號給幹掉
         let saleshavedou = salesAmountInput.text
         let salesremovedou = saleshavedou!.replacingOccurrences(of: ",", with: "") //取代
@@ -97,14 +104,19 @@ class ViewController: UIViewController {
         //replacingOccurrences(of: ",", with: "")
         //totalAmountInput.text = String(Double(salesAmountInput.text!)! * 105/100)
         //taxAmount.text = String(Double(salesAmountInput.text!)! * 5/105)
+        }else{
+            salesAmountInput.text = "超過金額請重新輸入"
+            totalAmountInput.text = ""
+            taxAmount.text = ""
+            capitalshow.text = ""
+        }
     }
     
         
     
-        
-    
     @IBAction func totalsend(_ sender: Any) {
-
+        
+        if salesAmountInput.text!.count < 20 {
         //無論輸入框收到什麼值，都先把逗號給幹掉
         let totalhavedou = totalAmountInput.text
         let totalremovedou = totalhavedou!.replacingOccurrences(of: ",", with: "") //取代
@@ -138,7 +150,7 @@ class ViewController: UIViewController {
             taxAmount.text = taxmoneyString
             
             //大寫中文
-            capitalshow.text = totalmoneyString?
+            let totalmoneyStringChines = totalmoneyString?
                 .replacingOccurrences(of: "0", with: "零")
                 .replacingOccurrences(of: "1", with: "壹")
                 .replacingOccurrences(of: "2", with: "貳")
@@ -150,16 +162,68 @@ class ViewController: UIViewController {
                 .replacingOccurrences(of: "8", with: "捌")
                 .replacingOccurrences(of: "9", with: "玖")
                 .replacingOccurrences(of: ",", with: "")
+            capitalshow.text = totalmoneyStringChines
         }
-        
         
         //salesAmountInput.text = String((Double(totalAmountInput.text!)! / 105) * 100)
         //taxAmount.text = String((Double(totalAmountInput.text!)! / 105) * 5)
+        }else{
+            totalAmountInput.text = "超過金額請重新輸入"
+            salesAmountInput.text = ""
+            taxAmount.text = ""
+            capitalshow.text = ""
+        }
+    }
+    
+    
+    @IBAction func serialsend(_ sender: Any) {
+        let serialstring = companySerialInput.text
+        if serialstring?.count == 8 {
+            let urlStr = "https://data.gcis.nat.gov.tw/od/data/api/5F64D864-61CB-4D0D-8AD9-492047CC1EA6?$format=json&$filter=Business_Accounting_NO eq \(String(describing: serialstring!))&$skip=0&$top=50".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            if let url = URL(string: urlStr!) {
+                URLSession.shared.dataTask(with: url) { (data, response , error) in
+                    if let data = data, let companyResaults = try? JSONDecoder().decode([CompanyData].self, from: data) {
+                        DispatchQueue.main.async {
+                            self.companyNameInput.text = companyResaults[0].Company_Name
+                        }
+                    }
+                }.resume()
+            }
+        }else{
+            self.companyNameInput.text = ""
+        }
+    }
+    
+    
+    @IBAction func companysend(_ sender: Any) {
+        let companystring = companyNameInput.text
+            let urlStr = "https://data.gcis.nat.gov.tw/od/data/api/6BBA2268-1367-4B42-9CCA-BC17499EBE8C?$format=json&$filter=Company_Name like \(String(describing: companystring!)) and Company_Status eq 01&$skip=0&$top=50".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            if let url = URL(string: urlStr!) {
+                URLSession.shared.dataTask(with: url) { (data, response , error) in
+                    if let data = data, let companyResaults = try? JSONDecoder().decode([CompanyData].self, from: data) {
+                        if companyResaults.count == 1{
+                            DispatchQueue.main.async {
+                                    self.companySerialInput.text = companyResaults[0].Business_Accounting_NO
+                                }
+                        }
+                    }
+                }.resume()
+            }else{
+                self.companySerialInput.text = ""
+        }
+        
+        
     }
     
     
     
-
+    
+    
+    
+    
+    
+    
+    
 
 }
 

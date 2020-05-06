@@ -15,6 +15,7 @@
 		3128F309242EFBD900F8208E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3128F307242EFBD900F8208E /* LaunchScreen.storyboard */; };
 		3128F314242EFBD900F8208E /* invoice_calculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3128F313242EFBD900F8208E /* invoice_calculatorTests.swift */; };
 		3128F31F242EFBD900F8208E /* invoice_calculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3128F31E242EFBD900F8208E /* invoice_calculatorUITests.swift */; };
+		31825792243E35CC00ADB8C7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31825791243E35CC00ADB8C7 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3128F2F9242EFBD800F8208E /* invoice_calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = invoice_calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3128F2F9242EFBD800F8208E /* 手開發票好舒服.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "手開發票好舒服.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3128F2FC242EFBD800F8208E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3128F2FE242EFBD800F8208E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3128F300242EFBD800F8208E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		3128F31A242EFBD900F8208E /* invoice_calculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = invoice_calculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3128F31E242EFBD900F8208E /* invoice_calculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = invoice_calculatorUITests.swift; sourceTree = "<group>"; };
 		3128F320242EFBD900F8208E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31825791243E35CC00ADB8C7 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,7 @@
 		3128F2FA242EFBD800F8208E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3128F2F9242EFBD800F8208E /* invoice_calculator.app */,
+				3128F2F9242EFBD800F8208E /* 手開發票好舒服.app */,
 				3128F30F242EFBD900F8208E /* invoice_calculatorTests.xctest */,
 				3128F31A242EFBD900F8208E /* invoice_calculatorUITests.xctest */,
 			);
@@ -102,6 +104,7 @@
 				3128F2FC242EFBD800F8208E /* AppDelegate.swift */,
 				3128F2FE242EFBD800F8208E /* SceneDelegate.swift */,
 				3128F300242EFBD800F8208E /* ViewController.swift */,
+				31825791243E35CC00ADB8C7 /* File.swift */,
 				3128F302242EFBD800F8208E /* Main.storyboard */,
 				3128F305242EFBD900F8208E /* Assets.xcassets */,
 				3128F307242EFBD900F8208E /* LaunchScreen.storyboard */,
@@ -145,7 +148,7 @@
 			);
 			name = invoice_calculator;
 			productName = invoice_calculator;
-			productReference = 3128F2F9242EFBD800F8208E /* invoice_calculator.app */;
+			productReference = 3128F2F9242EFBD800F8208E /* 手開發票好舒服.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3128F30E242EFBD900F8208E /* invoice_calculatorTests */ = {
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3128F301242EFBD800F8208E /* ViewController.swift in Sources */,
+				31825792243E35CC00ADB8C7 /* File.swift in Sources */,
 				3128F2FD242EFBD800F8208E /* AppDelegate.swift in Sources */,
 				3128F2FF242EFBD800F8208E /* SceneDelegate.swift in Sources */,
 			);
@@ -435,14 +439,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LHZ773PQUU;
+				DEVELOPMENT_TEAM = 5PHT3L3743;
 				INFOPLIST_FILE = invoice_calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "monet.invoice-calculator";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nsdi.invoice;
+				PRODUCT_NAME = "手開發票好舒服";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -453,14 +458,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LHZ773PQUU;
+				DEVELOPMENT_TEAM = 5PHT3L3743;
 				INFOPLIST_FILE = invoice_calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "monet.invoice-calculator";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nsdi.invoice;
+				PRODUCT_NAME = "手開發票好舒服";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
